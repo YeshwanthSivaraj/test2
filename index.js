@@ -19,24 +19,24 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
 
-    console.log(req.body)
-    res.end('ok')
+    // console.log(req.body)
+    // res.end('ok')
 
-    // let body = ''
-    // res.on('data', (chunk) => {
-    //     body += chunk.toString()
-    // })
+    let body = ''
+    res.on('data', (chunk) => {
+        body += chunk
+    })
 
-    // res.on('end', () => {
-    //     let payload = body
+    res.on('end', () => {
+        let payload = JSON.parse(body)
 
-    //     if (payload.Type === 'SubscriptionConfirmation') {
-    //         try{
-    //             console.log('Subscription confirmed')
-    //             res.end("ok")
-    //         } catch (err) {
-    //             console.log(err)
-    //         }
-    //     }
-    // })
+        if (payload.Type === 'SubscriptionConfirmation') {
+            try{
+                console.log('Subscription confirmed', payload)
+                res.end("ok")
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    })
 })
