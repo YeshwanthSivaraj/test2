@@ -24,7 +24,7 @@ app.post('/', (req, res) => {
 
     let body = ''
     res.on('data', (chunk) => {
-        body += chunk
+        body += chunk.toString()
     })
 
     res.on('end', () => {
