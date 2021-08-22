@@ -23,20 +23,16 @@ app.post('/', (req, res) => {
     // res.end('ok')
 
     let body = ''
-    res.on('data', (chunk) => {
+    req.on('data', (chunk) => {
         body += chunk.toString()
     })
 
-    res.on('end', () => {
+    req.on('end', () => {
         let payload = JSON.parse(body)
 
         if (payload.Type === 'SubscriptionConfirmation') {
-            try{
-                console.log('Subscription confirmed', payload)
-                res.end("ok")
-            } catch (err) {
-                console.log(err)
-            }
+            console.log('Subscription confirmed', payload)
+            res.end("ok")
         }
     })
 })
