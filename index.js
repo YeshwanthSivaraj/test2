@@ -30,9 +30,6 @@ app.post('/', (req, res) => {
     req.on('end', () => {
         let payload = JSON.parse(body)
 
-        if (payload.Type === 'SubscriptionConfirmation') {
-            console.log('Subscription confirmed', payload)
-            res.end("ok")
-        }
+        console.log(payload)
     })
 })
