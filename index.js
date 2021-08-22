@@ -1,4 +1,5 @@
 const express = require('express');
+const fetch = require('node-fetch');
 
 const app = express();
 
@@ -24,6 +25,16 @@ app.post('/', (req, res) => {
     })
 
     res.on('end', () => {
-        console.log(body)
+        let payload = body
+
+        if (payload.Type === 'SubscriptionConfirmation') {
+            try{
+                const data = fetch(payload.ubscribeURL)
+                console.log('Subscription confirmed')
+                res.end("ok")
+            } catch (err) {
+                console.log(err)
+            }
+        }
     })
 })
