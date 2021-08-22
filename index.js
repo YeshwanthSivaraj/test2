@@ -29,7 +29,6 @@ app.post('/', (req, res) => {
 
         if (payload.Type === 'SubscriptionConfirmation') {
             try{
-                const data = fetch(payload.SubscribeURL)
                 console.log('Subscription confirmed')
                 res.end("ok")
             } catch (err) {
