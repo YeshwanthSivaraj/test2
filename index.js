@@ -1,5 +1,4 @@
 const express = require('express');
-const fetch = require('node-fetch');
 
 const app = express();
 
@@ -15,7 +14,7 @@ app.listen(port, () => {
 })
 
 app.get('/', (req, res) => {
-    res.send('SES SNS TO HEROKU webapp quiet-falls')
+    res.send('SES SNS-falls')
 })
 
 app.post('/', (req, res) => {
@@ -25,7 +24,7 @@ app.post('/', (req, res) => {
     })
 
     res.on('end', () => {
-        let payload = JSON.parse(body)
+        let payload = body
 
         if (payload.Type === 'SubscriptionConfirmation') {
             try{
