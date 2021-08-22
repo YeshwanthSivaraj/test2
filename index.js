@@ -18,21 +18,25 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    let body = ''
-    res.on('data', (chunk) => {
-        body += chunk.toString()
-    })
 
-    res.on('end', () => {
-        let payload = body
+    console.log(req.body)
+    res.end('ok')
 
-        if (payload.Type === 'SubscriptionConfirmation') {
-            try{
-                console.log('Subscription confirmed')
-                res.end("ok")
-            } catch (err) {
-                console.log(err)
-            }
-        }
-    })
+    // let body = ''
+    // res.on('data', (chunk) => {
+    //     body += chunk.toString()
+    // })
+
+    // res.on('end', () => {
+    //     let payload = body
+
+    //     if (payload.Type === 'SubscriptionConfirmation') {
+    //         try{
+    //             console.log('Subscription confirmed')
+    //             res.end("ok")
+    //         } catch (err) {
+    //             console.log(err)
+    //         }
+    //     }
+    // })
 })
