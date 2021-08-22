@@ -25,7 +25,7 @@ app.post('/', (req, res) => {
     })
 
     res.on('end', () => {
-        let payload = body
+        let payload = JSON.parse(body)
 
         if (payload.Type === 'SubscriptionConfirmation') {
             try{
