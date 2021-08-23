@@ -28,10 +28,10 @@ app.post('/', (req, res) => {
     })
 
     req.on('end', () => {
-        let payload = JSON.parse(body)
+        let payload = JSON.parse(body.Message)
 
-        const event_type = payload.Message.eventType.toLowerCase()
-        const event_data = payload.Message
+        const event_type = payload.eventType.toLowerCase()
+        const event_data = payload
         let result = {}
 
         if (event_type === "delivery") {
