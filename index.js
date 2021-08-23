@@ -31,11 +31,10 @@ app.post('/', (req, res) => {
         let payload = JSON.parse(body)
 
         let message = payload.Message
-        let event_type = message.eventType.toLowerCase()
         let event_data = message
         let result = {}
 
-        if (event_type === "delivery") {
+        if (message.eventType === "Delivery") {
             let messageID = event_data.mail.messageId
             let timestamp = new Date(event_data.delivery.timestamp)
             let email_id = event_data.mail.destination[0]
