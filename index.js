@@ -33,6 +33,7 @@ app.post('/', (req, res) => {
         let message = JSON.parse(payload.Message)
 
         console.log(message.eventType)
+        console.log(message)
 
         res.end('ok')        
     })
