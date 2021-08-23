@@ -30,7 +30,7 @@ app.post('/', (req, res) => {
     req.on('end', () => {
         let payload = JSON.parse(body)
 
-        let message = payload.Message
+        let message = JSON.parse(payload.Message)
 
         console.log(message.eventType)
 
