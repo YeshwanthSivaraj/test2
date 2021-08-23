@@ -28,7 +28,7 @@ app.post('/', (req, res) => {
     })
 
     req.on('end', () => {
-        let payload = JSON.parse(body.Message)
+        let payload = JSON.parse(body)
 
         // if (payload.eventType === "Delivery") {
         //     let messageID = payload.mail.messageId
@@ -39,6 +39,6 @@ app.post('/', (req, res) => {
         //     console.log(messageID, timestamp, email_id, subject) 
         //     res.end('ok')
         // }
-        console.log(payload)
+        console.log(payload.Message)
     })
 })
