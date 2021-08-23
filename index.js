@@ -30,14 +30,15 @@ app.post('/', (req, res) => {
     req.on('end', () => {
         let payload = JSON.parse(body.Message)
 
-        if (payload.eventType === "Delivery") {
-            let messageID = payload.mail.messageId
-            let timestamp = new Date(payload.delivery.timestamp)
-            let email_id = payload.mail.destination[0]
-            let subject = payload.mail.commonHeaders.subject
+        // if (payload.eventType === "Delivery") {
+        //     let messageID = payload.mail.messageId
+        //     let timestamp = new Date(payload.delivery.timestamp)
+        //     let email_id = payload.mail.destination[0]
+        //     let subject = payload.mail.commonHeaders.subject
 
-            console.log(messageID, timestamp, email_id, subject) 
-            res.end('ok')
-        }
+        //     console.log(messageID, timestamp, email_id, subject) 
+        //     res.end('ok')
+        // }
+        console.log(payload)
     })
 })
