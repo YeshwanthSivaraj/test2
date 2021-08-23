@@ -48,8 +48,7 @@ app.post('/', (req, res) => {
             // }
 
             console.log(messageID, timestamp, email_id, subject) 
+            res.end('ok')
         }
-        
-        res.end('ok')
     })
 })
