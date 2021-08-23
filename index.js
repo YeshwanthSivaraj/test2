@@ -28,17 +28,18 @@ app.post('/', (req, res) => {
     })
 
     req.on('end', () => {
-        let payload = JSON.parse(body.Message)
+        let payload = JSON.parse(body)
 
-        const event_type = payload.eventType.toLowerCase()
-        const event_data = payload
+        let message = payload.Message
+        let event_type = payload.eventType.toLowerCase()
+        let event_data = message
         let result = {}
 
         if (event_type === "delivery") {
-            const messageID = event_data.mail.messageId
-            const timestamp = new Date(event_data.delivery.timestamp)
-            const email_id = event_data.mail.destination[0]
-            const subject = event_data.mail.commonHeaders.subject
+            let messageID = event_data.mail.messageId
+            let timestamp = new Date(event_data.delivery.timestamp)
+            let email_id = event_data.mail.destination[0]
+            let subject = event_data.mail.commonHeaders.subject
 
             result = {
                 messageID,
