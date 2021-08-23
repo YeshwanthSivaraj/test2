@@ -28,7 +28,7 @@ app.post('/', (req, res) => {
     })
 
     req.on('end', () => {
-        let payload = body.Message
+        let payload = JSON.parse(body)
 
         let message = payload
 
