@@ -34,13 +34,7 @@ app.post('/', (req, res) => {
 
         
         if (message.eventType === "Delivery") {
-            let messageID = message.mail.messageId
-            let timestamp = new Date(message.delivery.timestamp)
-            let email_id = message.mail.destination[0]
-            let subject = message.mail.commonHeaders.subject
-
-            console.log(messageID, timestamp, email_id, subject) 
-
+            console.log(message)
         }
         res.end('ok')        
     })
