@@ -30,6 +30,11 @@ app.post('/', (req, res) => {
     req.on('end', () => {
         let payload = JSON.parse(body)
 
+        let message = payload.Message
+
+        console.log(message)
+
+        res.end('ok')
         // if (payload.eventType === "Delivery") {
         //     let messageID = payload.mail.messageId
         //     let timestamp = new Date(payload.delivery.timestamp)
@@ -38,7 +43,6 @@ app.post('/', (req, res) => {
 
         //     console.log(messageID, timestamp, email_id, subject) 
         //     res.end('ok')
-        // }
-        console.log(payload.Message)
+        // }        
     })
 })
