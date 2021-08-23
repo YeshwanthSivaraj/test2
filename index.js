@@ -32,7 +32,7 @@ app.post('/', (req, res) => {
 
         let message = payload.Message
 
-        console.log(message)
+        console.log(message.eventType)
 
         res.end('ok')        
     })
