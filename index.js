@@ -31,7 +31,7 @@ app.post('/', (req, res) => {
         let payload = JSON.parse(body)
 
         let message = payload.Message
-        let event_type = payload.eventType.toLowerCase()
+        let event_type = message.eventType.toLowerCase()
         let event_data = message
         let result = {}
 
