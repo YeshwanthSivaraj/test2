@@ -32,7 +32,7 @@ app.post('/', (req, res) => {
 
         let message = payload.Message
         let event_data = message
-        let result = {}
+        // let result = {}
 
         if (message.eventType === "Delivery") {
             let messageID = event_data.mail.messageId
@@ -40,14 +40,16 @@ app.post('/', (req, res) => {
             let email_id = event_data.mail.destination[0]
             let subject = event_data.mail.commonHeaders.subject
 
-            result = {
-                messageID,
-                timestamp,
-                email_id,
-                subject
-            }
+            // result = {
+            //     messageID,
+            //     timestamp,
+            //     email_id,
+            //     subject
+            // }
+
+            console.log(messageID, timestamp, email_id, subject) 
         }
-        console.log(result)
+        
         res.end('ok')
     })
 })
