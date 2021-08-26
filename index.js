@@ -35,8 +35,14 @@ app.post('/', (req, res) => {
         const subject = message.mail.commonHeaders.subject
         let description = ''
 
-        if (message.eventType === "Delivery") {
+        if (message.eventType === "Bounce") {
+            description = message.bounce.bouncedRecipients.diagnosticCode
+        } else if (message.eventType === "Complaint") {
+            description = message.complaint.complaintFeedbackType
+        } else if (message.eventType === "Delivery") {
             description = message.delivery.smtpResponse
+        } else if (message.eventType === "Reject") {
+            description = message.reject.reason
         }
 
         const result = {
