@@ -18,10 +18,6 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-
-    // console.log(req.body)
-    // res.end('ok')
-
     let body = ''
     req.on('data', (chunk) => {
         body += chunk.toString()
@@ -32,8 +28,21 @@ app.post('/', (req, res) => {
 
         let message = JSON.parse(payload.Message)
 
-        console.log(message.eventType)
-        console.log(message)
+        const status = message.eventType
+        const messageID = message.mail.messageId
+        const timestamp = new Date(message.mail.timestamp)
+        const email_id = message.mail.destination[0]
+        const subject = message.mail.commonHeaders.subject
+
+        const result = {
+            status,
+            messageID,
+            timestamp,
+            email_id,
+            subject
+        }
+
+        console.log(result)
 
         res.end('ok')        
     })
