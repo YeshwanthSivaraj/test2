@@ -33,13 +33,19 @@ app.post('/', (req, res) => {
         const timestamp = new Date(message.mail.timestamp)
         const email_id = message.mail.destination[0]
         const subject = message.mail.commonHeaders.subject
+        let description = ''
+
+        if (message.eventType === "Delivery") {
+            description = message.delivery.smtpResponse
+        }
 
         const result = {
             status,
             messageID,
             timestamp,
             email_id,
-            subject
+            subject,
+            description
         }
 
         console.log(result)
