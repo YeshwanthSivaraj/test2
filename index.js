@@ -26,6 +26,7 @@ app.post("/", (req, res) => {
   });
 
   req.on("end", () => {
+    console.log(body);
     let payload = JSON.parse(body);
     console.log(payload);
 
